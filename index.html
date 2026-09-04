@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Crear Tarjeta Digital</title>
+    <title>Crear Tarjeta Digital - Julio Vargas</title>
     <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
@@ -13,32 +13,33 @@
         <form id="form-tarjeta">
             <div class="grupo">
                 <label>Nombre completo</label>
-                <input type="text" id="nombre" required>
+                <input type="text" id="nombre" value="Julio Vargas" required>
             </div>
             
             <div class="grupo">
                 <label>Cargo / Profesión</label>
-                <input type="text" id="cargo" required>
+                <input type="text" id="cargo" value="Gerente" required>
             </div>
             
             <div class="grupo">
                 <label>Email</label>
-                <input type="email" id="email" required>
+                <input type="email" id="email" value="NGEGESTION@gmail.com" required>
             </div>
             
             <div class="grupo">
                 <label>Teléfono</label>
-                <input type="tel" id="telefono" required>
+                <input type="tel" id="telefono" value="0416-6520591" required>
             </div>
             
             <div class="grupo">
                 <label>Empresa (opcional)</label>
-                <input type="text" id="empresa">
+                <input type="text" id="empresa" value="nge">
             </div>
             
             <div class="grupo">
-                <label>LinkedIn (opcional)</label>
-                <input type="url" id="linkedin" placeholder="https://linkedin.com/in/...">
+                <label>LinkedIn o Web (opcional)</label>
+                <!-- Corregido el placeholder para que sea más claro -->
+                <input type="url" id="linkedin" value="https://guia-digital.com" placeholder="https://...">
             </div>
             
             <div class="grupo">
@@ -50,8 +51,15 @@
                 </select>
             </div>
             
-            <button type="submit">Ver vista previa</button>
+            <button type="submit">✨ Ver vista previa</button>
         </form>
+
+        <!-- AQUÍ SE MOSTRARÁ LA TARJETA -->
+        <div id="contenedor-preview" class="oculto">
+            <h2 style="text-align:center; margin-top:30px;">Vista Previa de tu Tarjeta</h2>
+            <div id="tarjeta-render"></div>
+            <button onclick="window.print()" style="background:#28a745; margin-top:15px;">🖨️ Imprimir / Guardar como PDF</button>
+        </div>
     </div>
     
     <script src="js/app.js"></script>

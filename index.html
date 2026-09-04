@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Crear Tarjeta Digital - Julio Vargas</title>
+    <title>Creador de Tarjetas Digitales</title>
     <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
@@ -37,28 +37,36 @@
             </div>
             
             <div class="grupo">
-                <label>LinkedIn o Web (opcional)</label>
-                <!-- Corregido el placeholder para que sea más claro -->
+                <label>Sitio Web o LinkedIn</label>
                 <input type="url" id="linkedin" value="https://guia-digital.com" placeholder="https://...">
             </div>
             
             <div class="grupo">
                 <label>Elige una plantilla</label>
                 <select id="plantilla">
-                    <option value="1">Moderna (azul)</option>
-                    <option value="2">Minimalista (blanco/negro)</option>
-                    <option value="3">Creativa (gradiente)</option>
+                    <option value="moderna">Moderna (Azul)</option>
+                    <option value="minimalista">Minimalista (Blanco/Negro)</option>
+                    <option value="creativa">Creativa (Gradiente)</option>
                 </select>
             </div>
             
-            <button type="submit">✨ Ver vista previa</button>
+            <!-- type="button" evita que la página se recargue -->
+            <button type="button" id="btn-ver">✨ Generar Vista Previa</button>
         </form>
 
-        <!-- AQUÍ SE MOSTRARÁ LA TARJETA -->
+        <!-- Contenedor de la Vista Previa -->
         <div id="contenedor-preview" class="oculto">
-            <h2 style="text-align:center; margin-top:30px;">Vista Previa de tu Tarjeta</h2>
+            <h2 style="text-align:center; margin-top:30px; color:#333;">Tu Tarjeta Digital</h2>
+            
+            <!-- Aquí se dibuja la tarjeta -->
             <div id="tarjeta-render"></div>
-            <button onclick="window.print()" style="background:#28a745; margin-top:15px;">🖨️ Imprimir / Guardar como PDF</button>
+            
+            <div style="text-align:center; margin-top:20px; display:flex; gap:10px; justify-content:center;">
+                <button onclick="window.print()" class="btn-secundario">🖨️ Imprimir / PDF</button>
+                <button id="btn-descargar" class="btn-secundario">💾 Guardar en Contactos</button>
+            </div>
+            
+            <button onclick="location.reload()" style="background:#6c757d; margin-top:15px;">🔄 Crear otra</button>
         </div>
     </div>
     

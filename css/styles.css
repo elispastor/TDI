@@ -1,0 +1,39 @@
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #f4f6f9; padding: 20px; color: #333; }
+.container { max-width: 600px; margin: 0 auto; background: white; padding: 30px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.08); }
+h1 { text-align: center; margin-bottom: 25px; color: #2c3e50; }
+.grupo { margin-bottom: 15px; }
+label { display: block; margin-bottom: 6px; font-weight: 600; color: #555; font-size: 14px; }
+input, select { width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 6px; font-size: 15px; transition: border 0.3s; }
+input:focus, select:focus { border-color: #007bff; outline: none; }
+button { width: 100%; padding: 14px; background: #007bff; color: white; border: none; border-radius: 6px; font-size: 16px; font-weight: bold; cursor: pointer; margin-top: 10px; transition: background 0.3s; }
+button:hover { background: #0056b3; }
+.btn-secundario { background: #28a745; width: auto; padding: 10px 20px; font-size: 14px; }
+.btn-secundario:hover { background: #218838; }
+.oculto { display: none; }
+
+/* --- PLANTILLA 1: MODERNA (AZUL) --- */
+.tarjeta-moderna { background: linear-gradient(135deg, #007bff, #0056b3); color: white; padding: 30px; border-radius: 15px; text-align: center; box-shadow: 0 8px 20px rgba(0, 123, 255, 0.3); margin-top: 20px; }
+.tarjeta-moderna h2 { font-size: 28px; margin-bottom: 5px; }
+.tarjeta-moderna .cargo { font-size: 18px; opacity: 0.9; font-weight: bold; margin-bottom: 5px; }
+.tarjeta-moderna .empresa { font-size: 15px; opacity: 0.8; margin-bottom: 20px; }
+.tarjeta-moderna .datos { background: rgba(255, 255, 255, 0.15); padding: 15px; border-radius: 10px; }
+.tarjeta-moderna p { margin: 10px 0; font-size: 15px; }
+.tarjeta-moderna a { color: white; text-decoration: none; font-weight: bold; }
+.tarjeta-moderna a:hover { text-decoration: underline; }
+
+/* --- PLANTILLA 2: MINIMALISTA --- */
+.tarjeta-minimalista { background: #ffffff; color: #222; padding: 30px; border-radius: 4px; text-align: center; border: 2px solid #222; margin-top: 20px; }
+.tarjeta-minimalista h2 { font-size: 26px; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 5px; }
+.tarjeta-minimalista .cargo { font-size: 16px; color: #666; margin-bottom: 20px; border-bottom: 1px solid #ddd; padding-bottom: 10px; display: inline-block; }
+.tarjeta-minimalista .datos { text-align: left; margin-top: 15px; }
+.tarjeta-minimalista p { margin: 12px 0; font-size: 15px; }
+.tarjeta-minimalista a { color: #222; text-decoration: none; border-bottom: 1px dotted #222; }
+
+/* --- PLANTILLA 3: CREATIVA --- */
+.tarjeta-creativa { background: linear-gradient(45deg, #ff6b6b, #feca57); color: white; padding: 30px; border-radius: 20px 0 20px 0; text-align: center; box-shadow: 0 10px 25px rgba(255, 107, 107, 0.4); margin-top: 20px; }
+.tarjeta-creativa h2 { font-size: 30px; font-weight: 800; margin-bottom: 5px; text-shadow: 1px 1px 3px rgba(0,0,0,0.2); }
+.tarjeta-creativa .cargo { font-size: 18px; font-weight: 600; margin-bottom: 20px; }
+.tarjeta-creativa .datos { background: rgba(255,255,255,0.2); padding: 15px; border-radius: 12px; backdrop-filter: blur(5px); }
+.tarjeta-creativa p { margin: 10px 0; font-size: 16px; }
+.tarjeta-creativa a { color: white; text-decoration: none; font-weight: bold; }

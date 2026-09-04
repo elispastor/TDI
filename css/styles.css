@@ -1,39 +1,48 @@
-* { margin: 0; padding: 0; box-sizing: border-box; }
-body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #f4f6f9; padding: 20px; color: #333; }
-.container { max-width: 600px; margin: 0 auto; background: white; padding: 30px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.08); }
-h1 { text-align: center; margin-bottom: 25px; color: #2c3e50; }
-.grupo { margin-bottom: 15px; }
-label { display: block; margin-bottom: 6px; font-weight: 600; color: #555; font-size: 14px; }
-input, select { width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 6px; font-size: 15px; transition: border 0.3s; }
-input:focus, select:focus { border-color: #007bff; outline: none; }
-button { width: 100%; padding: 14px; background: #007bff; color: white; border: none; border-radius: 6px; font-size: 16px; font-weight: bold; cursor: pointer; margin-top: 10px; transition: background 0.3s; }
-button:hover { background: #0056b3; }
-.btn-secundario { background: #28a745; width: auto; padding: 10px 20px; font-size: 14px; }
-.btn-secundario:hover { background: #218838; }
-.oculto { display: none; }
+* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', system-ui, sans-serif; }
+body { background: #f0f2f5; color: #333; min-height: 100vh; display: flex; justify-content: center; padding: 20px; }
+.app-container { width: 100%; max-width: 450px; }
+.panel { background: white; border-radius: 20px; padding: 25px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
+.oculto { display: none !important; }
 
-/* --- PLANTILLA 1: MODERNA (AZUL) --- */
-.tarjeta-moderna { background: linear-gradient(135deg, #007bff, #0056b3); color: white; padding: 30px; border-radius: 15px; text-align: center; box-shadow: 0 8px 20px rgba(0, 123, 255, 0.3); margin-top: 20px; }
-.tarjeta-moderna h2 { font-size: 28px; margin-bottom: 5px; }
-.tarjeta-moderna .cargo { font-size: 18px; opacity: 0.9; font-weight: bold; margin-bottom: 5px; }
-.tarjeta-moderna .empresa { font-size: 15px; opacity: 0.8; margin-bottom: 20px; }
-.tarjeta-moderna .datos { background: rgba(255, 255, 255, 0.15); padding: 15px; border-radius: 10px; }
-.tarjeta-moderna p { margin: 10px 0; font-size: 15px; }
-.tarjeta-moderna a { color: white; text-decoration: none; font-weight: bold; }
-.tarjeta-moderna a:hover { text-decoration: underline; }
+/* Formulario */
+h2 { text-align: center; margin-bottom: 20px; color: #1a1a1a; }
+.form-group { margin-bottom: 15px; }
+label { display: block; font-size: 13px; font-weight: 600; color: #666; margin-bottom: 5px; }
+input { width: 100%; padding: 12px; border: 1px solid #e0e0e0; border-radius: 10px; font-size: 14px; transition: 0.3s; }
+input:focus { border-color: #007bff; outline: none; box-shadow: 0 0 0 3px rgba(0,123,255,0.1); }
+.btn-primary { width: 100%; padding: 15px; background: linear-gradient(135deg, #007bff, #0056b3); color: white; border: none; border-radius: 12px; font-size: 16px; font-weight: bold; cursor: pointer; margin-top: 10px; }
+.btn-secundario { width: 100%; padding: 12px; background: #f0f2f5; color: #333; border: none; border-radius: 10px; font-weight: 600; cursor: pointer; }
 
-/* --- PLANTILLA 2: MINIMALISTA --- */
-.tarjeta-minimalista { background: #ffffff; color: #222; padding: 30px; border-radius: 4px; text-align: center; border: 2px solid #222; margin-top: 20px; }
-.tarjeta-minimalista h2 { font-size: 26px; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 5px; }
-.tarjeta-minimalista .cargo { font-size: 16px; color: #666; margin-bottom: 20px; border-bottom: 1px solid #ddd; padding-bottom: 10px; display: inline-block; }
-.tarjeta-minimalista .datos { text-align: left; margin-top: 15px; }
-.tarjeta-minimalista p { margin: 12px 0; font-size: 15px; }
-.tarjeta-minimalista a { color: #222; text-decoration: none; border-bottom: 1px dotted #222; }
+/* Tarjeta Premium */
+.tarjeta-premium { text-align: center; position: relative; overflow: hidden; border-radius: 20px; background: white; }
+.tarjeta-header-bg { height: 120px; background: linear-gradient(135deg, #007bff, #00c6ff); }
+.perfil-container { position: relative; margin-top: -50px; display: flex; flex-direction: column; align-items: center; }
+.foto-perfil { width: 110px; height: 110px; border-radius: 50%; border: 4px solid white; object-fit: cover; box-shadow: 0 5px 15px rgba(0,0,0,0.15); }
+.logo-empresa { width: 40px; height: 40px; background: white; border-radius: 50%; padding: 5px; position: absolute; bottom: 0; right: calc(50% - 75px); box-shadow: 0 3px 10px rgba(0,0,0,0.1); }
 
-/* --- PLANTILLA 3: CREATIVA --- */
-.tarjeta-creativa { background: linear-gradient(45deg, #ff6b6b, #feca57); color: white; padding: 30px; border-radius: 20px 0 20px 0; text-align: center; box-shadow: 0 10px 25px rgba(255, 107, 107, 0.4); margin-top: 20px; }
-.tarjeta-creativa h2 { font-size: 30px; font-weight: 800; margin-bottom: 5px; text-shadow: 1px 1px 3px rgba(0,0,0,0.2); }
-.tarjeta-creativa .cargo { font-size: 18px; font-weight: 600; margin-bottom: 20px; }
-.tarjeta-creativa .datos { background: rgba(255,255,255,0.2); padding: 15px; border-radius: 12px; backdrop-filter: blur(5px); }
-.tarjeta-creativa p { margin: 10px 0; font-size: 16px; }
-.tarjeta-creativa a { color: white; text-decoration: none; font-weight: bold; }
+.info-principal { padding: 15px 20px 5px; }
+.info-principal h1 { font-size: 24px; color: #1a1a1a; margin-bottom: 5px; }
+.cargo { color: #007bff; font-weight: 600; font-size: 15px; margin-bottom: 3px; }
+.empresa { color: #666; font-size: 14px; }
+
+/* Botones de Acción */
+.acciones-rapidas { display: flex; gap: 10px; padding: 20px; justify-content: center; flex-wrap: wrap; }
+.btn-accion { flex: 1; min-width: 100px; padding: 12px; border-radius: 10px; border: none; font-weight: 600; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; font-size: 14px; text-decoration: none; transition: transform 0.2s; }
+.btn-accion:active { transform: scale(0.95); }
+.whatsapp { background: #25D366; color: white; }
+.guardar { background: #1a1a1a; color: white; }
+.compartir { background: #f0f2f5; color: #333; }
+
+/* Carrusel */
+.seccion-carrusel { padding: 0 20px 20px; text-align: left; }
+.seccion-carrusel h3 { font-size: 16px; margin-bottom: 10px; color: #333; }
+.carrusel { display: flex; gap: 15px; overflow-x: auto; scroll-snap-type: x mandatory; padding-bottom: 10px; -webkit-overflow-scrolling: touch; }
+.carrusel::-webkit-scrollbar { height: 6px; }
+.carrusel::-webkit-scrollbar-thumb { background: #ccc; border-radius: 3px; }
+.carrusel img { flex: 0 0 85%; scroll-snap-align: center; border-radius: 12px; height: 150px; object-fit: cover; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+
+/* Info Contacto */
+.info-contacto { border-top: 1px solid #eee; padding: 20px; display: flex; flex-direction: column; gap: 12px; }
+.dato-contacto { display: flex; align-items: center; gap: 10px; color: #333; text-decoration: none; font-size: 14px; padding: 10px; background: #f8f9fa; border-radius: 8px; transition: 0.3s; }
+.dato-contacto:hover { background: #e9ecef; }
+.dato-contacto i { color: #007bff; width: 20px; text-align: center; }

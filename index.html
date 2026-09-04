@@ -3,73 +3,108 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Creador de Tarjetas Digitales</title>
+    <title>Tarjeta Digital Premium</title>
     <link rel="stylesheet" href="css/styles.css">
+    <!-- Iconos de FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-    <div class="container">
-        <h1>📇 Crea tu Tarjeta Digital</h1>
-        
-        <form id="form-tarjeta">
-            <div class="grupo">
-                <label>Nombre completo</label>
-                <input type="text" id="nombre" value="Julio Vargas" required>
+    <div class="app-container">
+        <!-- SECCIÓN DEL FORMULARIO (Solo visible al editar) -->
+        <div id="editor-panel" class="panel">
+            <h2>🛠️ Diseña tu Tarjeta</h2>
+            <div class="form-group">
+                <label>Nombre Completo</label>
+                <input type="text" id="nombre" value="Julio Vargas">
             </div>
-            
-            <div class="grupo">
+            <div class="form-group">
                 <label>Cargo / Profesión</label>
-                <input type="text" id="cargo" value="Gerente" required>
+                <input type="text" id="cargo" value="Gerente General">
             </div>
-            
-            <div class="grupo">
+            <div class="form-group">
+                <label>Empresa</label>
+                <input type="text" id="empresa" value="NGE Gestión">
+            </div>
+            <div class="form-group">
+                <label>URL de tu Foto de Perfil</label>
+                <input type="url" id="foto" value="https://i.pravatar.cc/300?img=11" placeholder="https://...">
+            </div>
+            <div class="form-group">
+                <label>URL del Logo de tu Empresa</label>
+                <input type="url" id="logo" value="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" placeholder="https://...">
+            </div>
+            <div class="form-group">
+                <label>Teléfono (con código de país)</label>
+                <input type="tel" id="telefono" value="584166520591">
+            </div>
+            <div class="form-group">
                 <label>Email</label>
-                <input type="email" id="email" value="NGEGESTION@gmail.com" required>
+                <input type="email" id="email" value="NGEGESTION@gmail.com">
+            </div>
+            <div class="form-group">
+                <label>Sitio Web</label>
+                <input type="url" id="web" value="https://guia-digital.com">
             </div>
             
-            <div class="grupo">
-                <label>Teléfono</label>
-                <input type="tel" id="telefono" value="0416-6520591" required>
+            <h3 style="margin-top:20px; font-size:16px;">🖼️ Imágenes para el Carrusel (URLs separadas por coma)</h3>
+            <div class="form-group">
+                <input type="text" id="carrusel-imgs" value="https://images.unsplash.com/photo-1497366216548-37526070297c?w=500, https://images.unsplash.com/photo-1497366811353-6870744d04b2?w=500, https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=500" placeholder="url1, url2, url3">
             </div>
-            
-            <div class="grupo">
-                <label>Empresa (opcional)</label>
-                <input type="text" id="empresa" value="nge">
-            </div>
-            
-            <div class="grupo">
-                <label>Sitio Web o LinkedIn</label>
-                <input type="url" id="linkedin" value="https://guia-digital.com" placeholder="https://...">
-            </div>
-            
-            <div class="grupo">
-                <label>Elige una plantilla</label>
-                <select id="plantilla">
-                    <option value="moderna">Moderna (Azul)</option>
-                    <option value="minimalista">Minimalista (Blanco/Negro)</option>
-                    <option value="creativa">Creativa (Gradiente)</option>
-                </select>
-            </div>
-            
-            <!-- type="button" evita que la página se recargue -->
-            <button type="button" id="btn-ver">✨ Generar Vista Previa</button>
-        </form>
 
-        <!-- Contenedor de la Vista Previa -->
-        <div id="contenedor-preview" class="oculto">
-            <h2 style="text-align:center; margin-top:30px; color:#333;">Tu Tarjeta Digital</h2>
-            
-            <!-- Aquí se dibuja la tarjeta -->
-            <div id="tarjeta-render"></div>
-            
-            <div style="text-align:center; margin-top:20px; display:flex; gap:10px; justify-content:center;">
-                <button onclick="window.print()" class="btn-secundario">🖨️ Imprimir / PDF</button>
-                <button id="btn-descargar" class="btn-secundario">💾 Guardar en Contactos</button>
+            <button id="btn-generar" class="btn-primary">✨ Generar Tarjeta Interactiva</button>
+        </div>
+
+        <!-- SECCIÓN DE LA TARJETA (Vista final) -->
+        <div id="card-panel" class="panel oculto">
+            <div class="tarjeta-premium">
+                <!-- Fondo decorativo -->
+                <div class="tarjeta-header-bg"></div>
+                
+                <!-- Logo y Foto -->
+                <div class="perfil-container">
+                    <img id="card-logo" class="logo-empresa" src="" alt="Logo">
+                    <img id="card-foto" class="foto-perfil" src="" alt="Foto">
+                </div>
+
+                <!-- Info Principal -->
+                <div class="info-principal">
+                    <h1 id="card-nombre"></h1>
+                    <p id="card-cargo" class="cargo"></p>
+                    <p id="card-empresa" class="empresa"></p>
+                </div>
+
+                <!-- Botones de Acción Rápida -->
+                <div class="acciones-rapidas">
+                    <a id="btn-whatsapp" href="#" target="_blank" class="btn-accion whatsapp">
+                        <i class="fab fa-whatsapp"></i> WhatsApp
+                    </a>
+                    <button id="btn-guardar" class="btn-accion guardar">
+                        <i class="fas fa-user-plus"></i> Guardar Contacto
+                    </button>
+                    <button id="btn-compartir" class="btn-accion compartir">
+                        <i class="fas fa-share-alt"></i> Compartir
+                    </button>
+                </div>
+
+                <!-- Carrusel de Imágenes -->
+                <div class="seccion-carrusel">
+                    <h3><i class="fas fa-images"></i> Portafolio / Servicios</h3>
+                    <div class="carrusel" id="carrusel-container">
+                        <!-- Las imágenes se inyectan aquí con JS -->
+                    </div>
+                </div>
+
+                <!-- Info de Contacto Detallada -->
+                <div class="info-contacto">
+                    <a id="card-email" href="#" class="dato-contacto"><i class="fas fa-envelope"></i> <span></span></a>
+                    <a id="card-web" href="#" target="_blank" class="dato-contacto"><i class="fas fa-globe"></i> <span></span></a>
+                </div>
             </div>
-            
-            <button onclick="location.reload()" style="background:#6c757d; margin-top:15px;">🔄 Crear otra</button>
+
+            <button id="btn-editar" class="btn-secundario" style="margin-top: 20px;">✏️ Volver a Editar</button>
         </div>
     </div>
-    
+
     <script src="js/app.js"></script>
 </body>
 </html>

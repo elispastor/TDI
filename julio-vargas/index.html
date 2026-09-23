@@ -1,1 +1,661 @@
-<h1>Prueba</h1>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>STYLE COLLECTION · Julio Vargas - Distribuidor Independiente</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Roboto, system-ui, sans-serif; }
+
+  :root {
+    --azul-oscuro: #0b1c3a;
+    --azul-medio: #1a4b8c;
+    --azul-claro: #3b82f6;
+    --dorado: #fbbf24;
+    --blanco: #ffffff;
+  }
+
+  body {
+    background: linear-gradient(145deg, var(--azul-oscuro), var(--azul-medio));
+    min-height: 100vh;
+    color: var(--blanco);
+    padding-top: 70px;
+  }
+
+  /* HEADER FIJO */
+  .header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: rgba(11, 28, 58, 0.95);
+    backdrop-filter: blur(10px);
+    border-bottom: 3px solid var(--dorado);
+    padding: 12px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 1000;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+  }
+  .header .logo-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .header .logo-header img {
+    height: 40px;
+    width: auto;
+  }
+  .header .logo-header .texto {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.1;
+  }
+  .header .logo-header .marca {
+    font-size: 14px;
+    font-weight: 800;
+    color: var(--dorado);
+    letter-spacing: 1px;
+  }
+  .header .logo-header .slogan {
+    font-size: 9px;
+    color: #a0c4e8;
+    letter-spacing: 0.5px;
+  }
+  .menu-btn {
+    background: none;
+    border: none;
+    font-size: 28px;
+    color: var(--dorado);
+    cursor: pointer;
+    padding: 4px 8px;
+  }
+
+  /* MENÚ LATERAL */
+  .menu-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.6);
+    z-index: 1100;
+  }
+  .menu-overlay.active { display: block; }
+  .menu-panel {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 75%;
+    max-width: 300px;
+    height: 100%;
+    background: var(--azul-oscuro);
+    padding: 24px 20px;
+    transform: translateX(100%);
+    transition: transform 0.3s ease;
+    z-index: 1200;
+    box-shadow: -8px 0 30px rgba(0,0,0,0.5);
+    overflow-y: auto;
+    border-left: 3px solid var(--dorado);
+  }
+  .menu-panel.open { transform: translateX(0); }
+  .menu-panel .close-btn {
+    background: none;
+    border: none;
+    font-size: 28px;
+    float: right;
+    cursor: pointer;
+    color: var(--dorado);
+  }
+  .menu-panel .menu-logo {
+    text-align: center;
+    margin: 30px 0 20px;
+  }
+  .menu-panel .menu-logo img {
+    height: 50px;
+    margin-bottom: 8px;
+  }
+  .menu-panel .menu-logo .marca {
+    font-size: 14px;
+    font-weight: 800;
+    color: var(--dorado);
+    letter-spacing: 1px;
+  }
+  .menu-panel ul {
+    list-style: none;
+    margin-top: 20px;
+  }
+  .menu-panel ul li {
+    padding: 14px 0;
+    border-bottom: 1px solid rgba(251,191,36,0.2);
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--blanco);
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    cursor: pointer;
+    transition: 0.2s;
+  }
+  .menu-panel ul li:hover { color: var(--dorado); padding-left: 8px; }
+  .menu-panel ul li i { width: 24px; color: var(--dorado); }
+
+  /* CONTENEDOR */
+  .container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px 16px 40px;
+  }
+
+  /* PORTADA */
+  .portada {
+    width: 100%;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.5);
+    margin-bottom: 24px;
+    border: 2px solid var(--dorado);
+  }
+  .portada img {
+    width: 100%;
+    display: block;
+  }
+
+  /* TÍTULO */
+  .titulo-principal {
+    text-align: center;
+    margin-bottom: 28px;
+  }
+  .titulo-principal h1 {
+    font-size: 2rem;
+    font-weight: 800;
+    color: var(--blanco);
+    text-shadow: 0 0 20px rgba(251,191,36,0.5);
+    line-height: 1.2;
+  }
+  .titulo-principal h1 span { color: var(--dorado); }
+  .titulo-principal .distribuidor {
+    font-size: 1.1rem;
+    color: var(--dorado);
+    font-weight: 600;
+    margin-top: 8px;
+  }
+  .titulo-principal .slogan {
+    font-size: 0.95rem;
+    color: #a0c4e8;
+    font-style: italic;
+    margin-top: 4px;
+  }
+
+  /* BOTONES PRINCIPALES */
+  .acciones-principales {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+    margin-bottom: 32px;
+  }
+  .btn {
+    padding: 14px 24px;
+    border-radius: 60px;
+    font-weight: 700;
+    font-size: 15px;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    transition: 0.2s;
+    flex: 1 1 auto;
+    min-width: 140px;
+  }
+  .btn:hover { transform: translateY(-2px); }
+  .btn-wa { background: #25D366; color: white; }
+  .btn-call { background: var(--azul-medio); color: white; }
+  .btn-share { background: var(--dorado); color: var(--azul-oscuro); }
+  .btn-qr { background: var(--azul-claro); color: white; }
+
+  /* CARRUSEL */
+  .seccion-titulo {
+    text-align: center;
+    font-size: 1.6rem;
+    font-weight: 800;
+    color: var(--dorado);
+    margin: 32px 0 20px;
+    text-shadow: 0 0 15px rgba(251,191,36,0.3);
+  }
+  .carrusel {
+    position: relative;
+    width: 100%;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.5);
+    background: #000;
+    margin-bottom: 32px;
+    border: 2px solid rgba(251,191,36,0.3);
+  }
+  .carrusel-inner {
+    display: flex;
+    transition: transform 0.5s ease;
+  }
+  .carrusel-slide {
+    min-width: 100%;
+    flex-shrink: 0;
+  }
+  .carrusel-slide img {
+    width: 100%;
+    display: block;
+    aspect-ratio: 4/3;
+    object-fit: cover;
+  }
+  .carrusel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(11,28,58,0.8);
+    color: var(--dorado);
+    border: 2px solid var(--dorado);
+    font-size: 1.5rem;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .carrusel-btn.prev { left: 10px; }
+  .carrusel-btn.next { right: 10px; }
+  .carrusel-indicators {
+    position: absolute;
+    bottom: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 6px;
+    background: rgba(0,0,0,0.6);
+    padding: 6px 14px;
+    border-radius: 30px;
+    z-index: 10;
+  }
+  .indicator {
+    width: 8px;
+    height: 8px;
+    background: rgba(255,255,255,0.4);
+    border-radius: 50%;
+    cursor: pointer;
+    transition: 0.2s;
+  }
+  .indicator.active { background: var(--dorado); width: 20px; border-radius: 10px; }
+
+  /* CATÁLOGO */
+  .catalogo-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+    margin-bottom: 32px;
+  }
+  .producto-card {
+    background: rgba(255,255,255,0.05);
+    border-radius: 16px;
+    overflow: hidden;
+    border: 1px solid rgba(251,191,36,0.25);
+    transition: 0.3s;
+    cursor: pointer;
+  }
+  .producto-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--dorado);
+    box-shadow: 0 10px 25px rgba(251,191,36,0.2);
+  }
+  .producto-card img {
+    width: 100%;
+    aspect-ratio: 1/1;
+    object-fit: cover;
+    display: block;
+  }
+  .producto-card .info {
+    padding: 10px;
+    text-align: center;
+  }
+  .producto-card .precio {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--dorado);
+    letter-spacing: 0.5px;
+  }
+
+  /* QR */
+  .qr-seccion {
+    text-align: center;
+    background: rgba(255,255,255,0.05);
+    border-radius: 20px;
+    padding: 24px 20px;
+    border: 2px solid var(--dorado);
+    margin-bottom: 32px;
+  }
+  .qr-seccion h3 {
+    font-size: 1.2rem;
+    color: var(--dorado);
+    margin-bottom: 14px;
+  }
+  .qr-seccion img {
+    width: 180px;
+    height: 180px;
+    background: white;
+    padding: 10px;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+  }
+  .qr-seccion p {
+    font-size: 12px;
+    color: #a0c4e8;
+    margin-top: 10px;
+  }
+
+  /* MODAL QR */
+  .modal-qr {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.85);
+    z-index: 2000;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+  }
+  .modal-qr.active { display: flex; }
+  .modal-qr .contenido {
+    background: var(--blanco);
+    border-radius: 24px;
+    padding: 30px 24px;
+    text-align: center;
+    max-width: 340px;
+    width: 100%;
+    position: relative;
+  }
+  .modal-qr .contenido .cerrar {
+    position: absolute;
+    top: 10px;
+    right: 14px;
+    background: none;
+    border: none;
+    font-size: 26px;
+    cursor: pointer;
+    color: var(--azul-oscuro);
+  }
+  .modal-qr .contenido img {
+    width: 220px;
+    height: 220px;
+    margin-bottom: 12px;
+  }
+  .modal-qr .contenido h3 {
+    color: var(--azul-oscuro);
+    font-size: 1.1rem;
+    margin-bottom: 6px;
+  }
+  .modal-qr .contenido p {
+    color: #666;
+    font-size: 12px;
+  }
+
+  /* FOOTER */
+  .footer {
+    text-align: center;
+    padding: 24px 16px;
+    border-top: 2px solid rgba(251,191,36,0.3);
+    margin-top: 20px;
+  }
+  .footer .marca-footer {
+    font-size: 1.1rem;
+    font-weight: 800;
+    color: var(--dorado);
+    letter-spacing: 1px;
+  }
+  .footer .slogan-footer {
+    font-size: 0.85rem;
+    color: #a0c4e8;
+    font-style: italic;
+    margin-top: 4px;
+  }
+  .footer .creditos {
+    font-size: 11px;
+    color: #6b8fa0;
+    margin-top: 12px;
+  }
+  .footer .creditos i { color: var(--dorado); }
+
+  /* RESPONSIVE */
+  @media (min-width: 600px) {
+    .catalogo-grid { grid-template-columns: repeat(3, 1fr); }
+    .titulo-principal h1 { font-size: 2.5rem; }
+  }
+  @media (min-width: 900px) {
+    .catalogo-grid { grid-template-columns: repeat(4, 1fr); }
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER FIJO -->
+<header class="header">
+  <div class="logo-header">
+    <img src="logo-style.png" alt="STYLE COLLECTION">
+    <div class="texto">
+      <span class="marca">STYLE COLLECTION</span>
+      <span class="slogan">¡Que nada apague tu luz!</span>
+    </div>
+  </div>
+  <button class="menu-btn" id="menuToggle"><i class="fas fa-bars"></i></button>
+</header>
+
+<!-- MENÚ LATERAL -->
+<div class="menu-overlay" id="menuOverlay"></div>
+<div class="menu-panel" id="menuPanel">
+  <button class="close-btn" id="menuClose"><i class="fas fa-times"></i></button>
+  <div class="menu-logo">
+    <img src="logo-style.png" alt="STYLE COLLECTION">
+    <div class="marca">STYLE COLLECTION</div>
+  </div>
+  <ul>
+    <li onclick="irA('inicio')"><i class="fas fa-home"></i> Inicio</li>
+    <li onclick="irA('carrusel')"><i class="fas fa-images"></i> Carrusel</li>
+    <li onclick="irA('catalogo')"><i class="fas fa-th"></i> Catálogo</li>
+    <li onclick="irA('qr')"><i class="fas fa-qrcode"></i> Mi QR</li>
+    <li onclick="window.open('https://wa.me/584166520591', '_blank')"><i class="fab fa-whatsapp"></i> WhatsApp</li>
+    <li onclick="window.location.href='tel:04166520591'"><i class="fas fa-phone"></i> Llamar</li>
+    <li onclick="compartir()"><i class="fas fa-share-alt"></i> Compartir</li>
+  </ul>
+</div>
+
+<!-- CONTENIDO -->
+<div class="container" id="inicio">
+
+  <!-- PORTADA -->
+  <div class="portada">
+    <img src="portada-style.jpg" alt="STYLE COLLECTION">
+  </div>
+
+  <!-- TÍTULO -->
+  <div class="titulo-principal">
+    <h1>STYLE <span>COLLECTION</span></h1>
+    <div class="distribuidor">Julio Vargas · Distribuidor Independiente</div>
+    <div class="slogan">¡Que nada apague tu luz!</div>
+  </div>
+
+  <!-- BOTONES PRINCIPALES -->
+  <div class="acciones-principales">
+    <a href="https://wa.me/584166520591" target="_blank" class="btn btn-wa"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+    <a href="tel:04166520591" class="btn btn-call"><i class="fas fa-phone"></i> Llamar</a>
+    <button class="btn btn-share" onclick="compartir()"><i class="fas fa-share-alt"></i> Compartir</button>
+    <button class="btn btn-qr" onclick="abrirQR()"><i class="fas fa-qrcode"></i> Ver QR</button>
+  </div>
+
+  <!-- CARRUSEL -->
+  <h2 class="seccion-titulo" id="carrusel">✨ Productos Destacados ✨</h2>
+  <div class="carrusel">
+    <div class="carrusel-inner" id="carruselInner">
+      <div class="carrusel-slide"><img src="F1.jpg" alt="Producto 1"></div>
+      <div class="carrusel-slide"><img src="F2.jpg" alt="Producto 2"></div>
+      <div class="carrusel-slide"><img src="F3.jpg" alt="Producto 3"></div>
+      <div class="carrusel-slide"><img src="F4.jpg" alt="Producto 4"></div>
+      <div class="carrusel-slide"><img src="F5.jpg" alt="Producto 5"></div>
+      <div class="carrusel-slide"><img src="F6.jpg" alt="Producto 6"></div>
+      <div class="carrusel-slide"><img src="F7.jpg" alt="Producto 7"></div>
+      <div class="carrusel-slide"><img src="F8.jpg" alt="Producto 8"></div>
+      <div class="carrusel-slide"><img src="F9.jpg" alt="Producto 9"></div>
+      <div class="carrusel-slide"><img src="F10.jpg" alt="Producto 10"></div>
+      <div class="carrusel-slide"><img src="F11.jpg" alt="Producto 11"></div>
+      <div class="carrusel-slide"><img src="F12.jpg" alt="Producto 12"></div>
+      <div class="carrusel-slide"><img src="F13.jpg" alt="Producto 13"></div>
+      <div class="carrusel-slide"><img src="F14.jpg" alt="Producto 14"></div>
+      <div class="carrusel-slide"><img src="F15.jpg" alt="Producto 15"></div>
+      <div class="carrusel-slide"><img src="F16.jpg" alt="Producto 16"></div>
+    </div>
+    <button class="carrusel-btn prev" id="prevBtn"><i class="fas fa-chevron-left"></i></button>
+    <button class="carrusel-btn next" id="nextBtn"><i class="fas fa-chevron-right"></i></button>
+    <div class="carrusel-indicators" id="indicadores"></div>
+  </div>
+
+  <!-- CATÁLOGO -->
+  <h2 class="seccion-titulo" id="catalogo">🛍️ Catálogo Completo</h2>
+  <div class="catalogo-grid" id="catalogoGrid">
+    <div class="producto-card" onclick="consultar()"><img src="F1.jpg" alt="Producto 1"><div class="info"><div class="precio">Consultar precio</div></div></div>
+    <div class="producto-card" onclick="consultar()"><img src="F2.jpg" alt="Producto 2"><div class="info"><div class="precio">Consultar precio</div></div></div>
+    <div class="producto-card" onclick="consultar()"><img src="F3.jpg" alt="Producto 3"><div class="info"><div class="precio">Consultar precio</div></div></div>
+    <div class="producto-card" onclick="consultar()"><img src="F4.jpg" alt="Producto 4"><div class="info"><div class="precio">Consultar precio</div></div></div>
+    <div class="producto-card" onclick="consultar()"><img src="F5.jpg" alt="Producto 5"><div class="info"><div class="precio">Consultar precio</div></div></div>
+    <div class="producto-card" onclick="consultar()"><img src="F6.jpg" alt="Producto 6"><div class="info"><div class="precio">Consultar precio</div></div></div>
+    <div class="producto-card" onclick="consultar()"><img src="F7.jpg" alt="Producto 7"><div class="info"><div class="precio">Consultar precio</div></div></div>
+    <div class="producto-card" onclick="consultar()"><img src="F8.jpg" alt="Producto 8"><div class="info"><div class="precio">Consultar precio</div></div></div>
+    <div class="producto-card" onclick="consultar()"><img src="F9.jpg" alt="Producto 9"><div class="info"><div class="precio">Consultar precio</div></div></div>
+    <div class="producto-card" onclick="consultar()"><img src="F10.jpg" alt="Producto 10"><div class="info"><div class="precio">Consultar precio</div></div></div>
+    <div class="producto-card" onclick="consultar()"><img src="F11.jpg" alt="Producto 11"><div class="info"><div class="precio">Consultar precio</div></div></div>
+    <div class="producto-card" onclick="consultar()"><img src="F12.jpg" alt="Producto 12"><div class="info"><div class="precio">Consultar precio</div></div></div>
+    <div class="producto-card" onclick="consultar()"><img src="F13.jpg" alt="Producto 13"><div class="info"><div class="precio">Consultar precio</div></div></div>
+    <div class="producto-card" onclick="consultar()"><img src="F14.jpg" alt="Producto 14"><div class="info"><div class="precio">Consultar precio</div></div></div>
+    <div class="producto-card" onclick="consultar()"><img src="F15.jpg" alt="Producto 15"><div class="info"><div class="precio">Consultar precio</div></div></div>
+    <div class="producto-card" onclick="consultar()"><img src="F16.jpg" alt="Producto 16"><div class="info"><div class="precio">Consultar precio</div></div></div>
+  </div>
+
+  <!-- QR -->
+  <div class="qr-seccion" id="qr">
+    <h3><i class="fas fa-qrcode"></i> Comparte mi Tarjeta</h3>
+    <img src="https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=https://tdi.guia-digital.com/julio-vargas" alt="QR Julio Vargas">
+    <p>Escanea para ver mi catálogo completo</p>
+  </div>
+
+</div>
+
+<!-- MODAL QR -->
+<div class="modal-qr" id="modalQR">
+  <div class="contenido">
+    <button class="cerrar" onclick="cerrarQR()"><i class="fas fa-times"></i></button>
+    <img src="https://api.qrserver.com/v1/create-qr-code/?size=400x400&data=https://tdi.guia-digital.com/julio-vargas" alt="QR Julio Vargas">
+    <h3>Mi Tarjeta Digital</h3>
+    <p>Escanea para ver mi catálogo</p>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="marca-footer">STYLE COLLECTION</div>
+  <div class="slogan-footer">¡Que nada apague tu luz!</div>
+  <div class="creditos">
+    © 2026 Julio Vargas · Distribuidor Independiente · Todos somos <i class="fas fa-heart"></i> · Derechos Reservados
+    <br>Tarjeta Digital Inteligente · TDI · Guía Digital
+  </div>
+</footer>
+
+<script>
+// MENÚ
+const menuToggle = document.getElementById('menuToggle');
+const menuClose = document.getElementById('menuClose');
+const menuPanel = document.getElementById('menuPanel');
+const menuOverlay = document.getElementById('menuOverlay');
+
+menuToggle.addEventListener('click', () => {
+  menuPanel.classList.add('open');
+  menuOverlay.classList.add('active');
+});
+menuClose.addEventListener('click', () => {
+  menuPanel.classList.remove('open');
+  menuOverlay.classList.remove('active');
+});
+menuOverlay.addEventListener('click', () => {
+  menuPanel.classList.remove('open');
+  menuOverlay.classList.remove('active');
+});
+
+function irA(id) {
+  document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
+  menuPanel.classList.remove('open');
+  menuOverlay.classList.remove('active');
+}
+
+// CARRUSEL
+const carruselInner = document.getElementById('carruselInner');
+const slides = document.querySelectorAll('.carrusel-slide');
+const totalSlides = slides.length;
+let currentIndex = 0;
+const indicadores = document.getElementById('indicadores');
+
+function updateCarrusel() {
+  carruselInner.style.transform = `translateX(-${currentIndex * 100}%)`;
+  document.querySelectorAll('.indicator').forEach((ind, i) => {
+    i === currentIndex ? ind.classList.add('active') : ind.classList.remove('active');
+  });
+}
+function nextSlide() { currentIndex = (currentIndex + 1) % totalSlides; updateCarrusel(); }
+function prevSlide() { currentIndex = (currentIndex - 1 + totalSlides) % totalSlides; updateCarrusel(); }
+
+for (let i = 0; i < totalSlides; i++) {
+  const ind = document.createElement('span');
+  ind.classList.add('indicator');
+  if (i === 0) ind.classList.add('active');
+  ind.onclick = () => { currentIndex = i; updateCarrusel(); };
+  indicadores.appendChild(ind);
+}
+document.getElementById('prevBtn').addEventListener('click', prevSlide);
+document.getElementById('nextBtn').addEventListener('click', nextSlide);
+setInterval(nextSlide, 5000);
+
+// COMPARTIR
+function compartir() {
+  const texto = 'Mira mi catálogo STYLE COLLECTION · ¡Que nada apague tu luz!';
+  const url = 'https://tdi.guia-digital.com/julio-vargas';
+  if (navigator.share) {
+    navigator.share({ title: 'STYLE COLLECTION · Julio Vargas', text: texto, url: url });
+  } else {
+    navigator.clipboard.writeText(texto + '\n' + url).then(() => {
+      alert('📋 Enlace copiado');
+    });
+  }
+}
+
+// QR MODAL
+function abrirQR() {
+  document.getElementById('modalQR').classList.add('active');
+}
+function cerrarQR() {
+  document.getElementById('modalQR').classList.remove('active');
+}
+
+// CONSULTAR PRODUCTO
+function consultar() {
+  const texto = 'Hola Julio, vi tu catálogo STYLE COLLECTION y me interesa un producto.';
+  window.open(`https://wa.me/584166520591?text=${encodeURIComponent(texto)}`, '_blank');
+}
+</script>
+
+</body>
+</html>
